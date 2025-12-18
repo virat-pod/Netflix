@@ -1,0 +1,710 @@
+@import url("https://fonts.googleapis.com/css2?family=Boldonse&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Martel+Sans:wght@200;300;400;600;700;800;900&display=swap");
+
+:root {
+  /* Main Assets */
+  --main-bg-img: url("/Clone Websites/Netflix/assets/img/hero-image.jpg");
+  --main-min-height: 93svh;
+  --main-bg-size: max(93.75rem, 100vw);
+
+  /* Main 'overlay assets' (.main .box) */
+  --main-box-inset: 0;
+  --main-box-opacity: 0.64;
+
+  /* navigation assets */
+  --nav-pad: 1rem 0;
+  --nav-height: 4rem;
+  --nav-max-width: 80vw;
+
+  /* navigation image assets */
+  --nav-img-width: 10rem;
+  --nav-img-margin-top: 2rem;
+  --nav-img-z-index: 10;
+
+  /* nav button assets (it, given to another btn too): */
+  --nav-btn-z-index: 10;
+  --nav-btn-margin-top: 2rem;
+  --nav-btn-margin-right: 0.6rem;
+  --nav-btn-font-size: 1.1rem;
+  --nav-btn-padding: 0.3rem 1rem;
+  --nav-btn-border-radius: 0.4rem;
+  --nav-btn-font-weight: 600;
+  --nav-btn-bg-color: rgba(18, 17, 17, 0.784);
+  --nav-btn-border-color: 1px solid rgba(255, 255, 255, 0.182);
+
+  /* nav button, sign-in btn (red-sm) */
+  --nav-btn-red-sm-color: white;
+  --nav-btn-red-sm-bg-color: red;
+  --nav-btn-red-sm-pad: 0.4rem 1rem;
+  --nav-btn-red-sm-border-radius: 0.4rem;
+  --nav-btn-red-sm-border: none;
+  --red-sm-hover: rgba(210, 10, 10, 0.8);
+
+  /* hero assets */
+  --hero-font-family: "Lato", sans-serif;
+  --hero-min-height: 80svh;
+  --hero-z-index: 5;
+  --hero-color: white;
+  --hero-gap: 1rem;
+  --hero-pad: 4rem 2rem 2rem 2rem;
+
+  /* hero heading assets  */
+  --hero-heading-font-weight: 900;
+  --hero-heading-font-size: 3.7rem;
+  --hero-heading-max-width: 43vw;
+  --hero-heading-text-align: center;
+
+  /* hero subtitle assets */
+  --hero-subtitle-font-weight: 600;
+  --hero-subtitle-font-size: 1.3rem;
+  --hero-subtitle-text-align: center;
+
+  /* hero cta assets  */
+  --hero-cta-para-font-size: 1.05rem;
+  --hero-cta-para-line-height: 2rem;
+  --hero-cta-para-font-weight: 400;
+  --hero-cta-para-margin-top: 0.8rem;
+
+  /* etc etc... This is clone.. of netflix */
+}
+
+* {
+  font-family: "Lato", sans-serif;
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: black;
+}
+
+.main {
+  background-image: var(--main-bg-img);
+  min-height: var(--main-min-height);
+  position: relative;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: var(--main-bg-size);
+}
+
+.main .box {
+  position: absolute;
+  inset: var(--main-box-inset);
+  background: black;
+  opacity: var(--main-box-opacity);
+  pointer-events: none;
+}
+
+nav {
+  padding: var(--nav-pad);
+  display: flex;
+  justify-content: space-between;
+  max-width: var(--nav-max-width);
+  margin: auto;
+  align-items: center;
+  height: var(--nav-height);
+}
+
+nav img {
+  color: red;
+  position: relative;
+  width: var(--nav-img-width);
+  margin-top: var(--nav-img-margin-top);
+  z-index: var(--nav-img-z-index);
+}
+
+.btn {
+  z-index: var(--nav-btn-z-index);
+  margin-top: var(--nav-btn-margin-top);
+  position: relative;
+  color: white;
+  margin-right: var(--nav-btn-margin-right);
+  background-color: var(--nav-btn-bg-color);
+  border: var(--nav-btn-border-color);
+  font-weight: var(--nav-btn-font-weight);
+  border-radius: var(--nav-btn-border-radius);
+  font-size: var(--nav-btn-font-size);
+  padding: var(--nav-btn-padding);
+}
+
+.lang-wrapper {
+  position: relative;
+  display: inline-block;
+}
+
+.lang-dropdown {
+  position: absolute;
+  top: calc(100% + 6px);
+  left: 0;
+  background: #000;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 4px;
+  list-style: none;
+  padding: 0.4rem 0;
+  min-width: 140px;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-6px);
+  transition: opacity 0.2s ease, transform 0.2s ease;
+  z-index: 1000;
+}
+
+.lang-wrapper.active .lang-dropdown {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.lang-dropdown li {
+  padding: 0.6rem 1rem;
+  color: white;
+  cursor: pointer;
+  font-size: 0.9rem;
+  white-space: nowrap;
+}
+
+.lang-dropdown li:hover {
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.lang-wrapper.active .lang-arrow {
+  transform: rotate(180deg);
+  transition: transform 0.2s ease;
+}
+
+.red-sm {
+  color: var(--nav-btn-red-sm-color);
+  padding: var(--nav-btn-red-sm-pad);
+  background-color: var(--nav-btn-red-sm-bg-color);
+  cursor: pointer;
+  border-radius: var(--nav-btn-red-sm-border-radius);
+  border: var(--nav-btn-red-sm-border);
+}
+
+.red-sm:hover {
+  background-color: var(--red-sm-hover);
+}
+
+.hero {
+  display: flex;
+  font-family: var(--hero-font-family);
+  min-height: var(--hero-min-height);
+  width: 100%;
+  z-index: var(--hero-z-index);
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  position: relative;
+  color: var(--hero-color);
+  gap: var(--hero-gap);
+  padding: var(--hero-pad);
+}
+
+.hero-heading {
+  font-weight: var(--hero-heading-font-weight);
+  font-family: "Lato", sans-serif;
+  text-align: var(--hero-heading-text-align);
+  max-width: var(--hero-heading-max-width);
+  font-size: var(--hero-heading-font-size);
+}
+
+.subtitle {
+  font-weight: var(--hero-subtitle-font-weight);
+  font-size: var(--hero-subtitle-font-size);
+  text-align: var(--hero-subtitle-text-align);
+}
+
+.hero-cta-para {
+  font-size: var(--hero-cta-para-font-size);
+  line-height: var(--hero-cta-para-line-height);
+  font-weight: var(--hero-cta-para-font-weight);
+  margin-top: var(--hero-cta-para-margin-top);
+  text-align: center;
+}
+
+.hero-cta {
+  display: flex;
+  justify-content: center;
+  align-items: stretch;
+  gap: 0.75rem;
+  width: 100%;
+  max-width: 36.75rem;
+}
+
+.hero-cta input {
+  flex: 1;
+  min-width: 0;
+  padding: 1rem 0.8rem;
+  font-size: 1.1rem;
+  background: rgba(18, 17, 17, 0.8);
+  border: 1px solid rgb(120, 115, 115);
+  color: white;
+  border-radius: 4px;
+}
+
+.hero-cta input::placeholder {
+  color: rgb(202, 195, 195);
+  font-size: 1.1rem;
+}
+
+#hero-input:focus {
+  outline: 2px solid rgb(255, 255, 255);
+  outline-offset: -2px;
+}
+
+.hero-cta button {
+  flex-shrink: 0;
+  padding: 1rem 2.3rem;
+  z-index: 10;
+  font-size: 1.2rem;
+  font-weight: 700;
+  height: auto;
+  background-color: red;
+  color: white;
+  border-radius: 0.2rem;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero-cta button:hover {
+  background-color: rgb(170, 15, 15);
+}
+
+.sepration {
+  height: 2px;
+  background-color: rgb(53, 52, 52);
+}
+
+.row {
+  padding: 2rem 0rem;
+  width: 80vw;
+  margin: auto;
+  margin-top: 1rem;
+}
+
+.row-title {
+  color: white;
+  font-size: 1.6rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+.row-wrapper {
+  position: relative;
+}
+
+.slider {
+  display: flex;
+  gap: 1rem;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+}
+
+.slider::-webkit-scrollbar {
+  display: none;
+}
+
+.item {
+  position: relative;
+  flex: 0 0 auto;
+  padding: 1rem;
+}
+
+.rank {
+  position: absolute;
+  left: -4px;
+  bottom: 10px;
+  font-size: 6rem;
+  font-weight: 900;
+  color: black;
+  -webkit-text-stroke: 2px white;
+  z-index: 2;
+}
+
+.item img {
+  width: 12rem;
+  border-radius: 6px;
+  position: relative;
+  z-index: 1;
+}
+
+.item:hover {
+  transform: scale(1.07);
+  transition: transform 0.4s ease-in-out;
+  cursor: pointer;
+}
+
+.arrow {
+  position: absolute;
+  top: 40%;
+  z-index: 20;
+  background: rgba(77, 76, 76, 0.6);
+  color: white;
+  border: none;
+  font-size: 2rem;
+  cursor: pointer;
+  border-radius: 0.5rem;
+  padding: 1rem 0.2rem;
+}
+
+.arrow.left {
+  left: 0;
+  margin-left: -1.8rem;
+}
+
+.arrow.right {
+  right: 0;
+  margin-right: -1.8rem;
+}
+
+.arrow:hover {
+  background: rgba(77, 76, 76, 0.8);
+}
+
+.card {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  width: 80vw;
+  margin: auto;
+  margin-top: 1rem;
+  height: auto;
+}
+
+.cards-title {
+  color: white;
+  font-size: 1.6rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+.cards-grid {
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  display: grid;
+  gap: 2rem;
+  justify-content: center;
+}
+
+.card-item h3 {
+  font-size: 1.7rem;
+  font-weight: bolder;
+  align-self: flex-start;
+}
+
+.card-item {
+  background: radial-gradient(
+      circle at bottom right,
+      rgb(110 35 39 / 37%),
+      transparent 60%
+    ),
+    linear-gradient(
+      to top,
+      rgb(55 46 80 / 51%),
+      rgb(108 45 195 / 52%),
+      rgb(117 0 255 / 26%)
+    );
+  color: white;
+  padding: 1rem 1rem 1rem 1rem;
+  border-radius: 0.5rem;
+  display: flex;
+  flex-direction: column;
+
+  width: auto;
+  gap: 1rem;
+}
+
+.card-para {
+  display: flex;
+  flex-grow: 1;
+  padding: 0 0 2rem 0;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.card-item p {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.7);
+  line-height: 1.2rem;
+}
+
+.card-icon {
+  display: flex;
+  justify-content: end;
+  color: black;
+}
+
+.faq {
+  width: 80vw;
+  margin: auto;
+  margin-top: 4rem;
+}
+
+.faq h2 {
+  color: white;
+  font-size: 1.6rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+.faq-box {
+  display: flex;
+  transition: background-color 0.3s ease;
+  background-color: rgb(47, 46, 46);
+  padding: 1.5rem;
+  justify-content: space-between;
+  align-items: center;
+  color: white;
+  cursor: pointer;
+  margin: 0.3rem 0;
+}
+
+.faq-box span {
+  font-size: 1.5rem;
+}
+
+.faq-box:hover {
+  background-color: rgb(81, 81, 81);
+}
+
+.faq-cta {
+  width: 80vw;
+  margin: 4rem auto;
+  text-align: center;
+  color: white;
+}
+
+.faq-cta-text {
+  font-size: 1.05rem;
+  margin-bottom: 1.2rem;
+}
+
+.faq-cta-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 0.8rem;
+  flex-wrap: wrap;
+}
+
+.faq-cta-form input {
+  max-width: 50rem;
+  width: 100%;
+  align-self: center;
+  padding: 1.2rem 1rem;
+  font-size: 1.5rem;
+  background: rgba(18, 17, 17, 0.8);
+  border: 1px solid rgb(120, 115, 115);
+  color: white;
+  border-radius: 4px;
+}
+
+.faq-cta-form input:focus {
+  outline: 2px solid white;
+  outline-offset: -2px;
+}
+
+.faq-cta-form button {
+  padding: 0 2rem;
+  font-size: 1.4rem;
+  font-weight: 800;
+  background: red;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  height: 3.6rem;
+  align-self: center;
+}
+
+.faq-cta-form button:hover {
+  background: rgb(255, 0, 0, 0.8);
+}
+
+.faq-answer {
+  max-height: 0;
+  font-size: 2rem;
+  overflow: hidden;
+  background-color: rgb(57, 57, 57);
+  color: white;
+  padding: 0 1.5rem;
+  transition: max-height 0.35s ease;
+}
+
+.faq-answer p {
+  padding: 1rem 0;
+}
+
+footer {
+  max-width: 80vw;
+  margin: auto;
+  color: white;
+  padding-bottom: 4rem;
+}
+
+.footer-question {
+  font-size: 1.3rem;
+  padding: 2rem 0;
+}
+
+.footer-wraper {
+  color: wheat;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+}
+
+.footer-wraper a {
+  color: rgb(135, 134, 134);
+}
+
+.footer-item {
+  display: flex;
+  flex-direction: column;
+  color: wheat;
+  gap: 1rem;
+}
+
+.footer-content {
+  display: flex;
+  gap: 2rem;
+  flex-direction: column;
+}
+
+main {
+  width: 80vw;
+  margin: auto;
+}
+
+.footer-btn {
+  padding: 0.3rem 2rem;
+  margin-top: 2.5rem;
+  max-width: 10rem;
+  width: 100%;
+}
+
+.virat-mark {
+  font-size: 1rem;
+  color: rgb(123, 123, 123);
+}
+
+.virat-mark a {
+  text-decoration: purple;
+  color: rgb(94, 93, 93);
+}
+
+.virat-mark span {
+  background-color: rgba(128, 0, 255, 0.071);
+  color: white;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+.virat-mark span:hover {
+  color: red;
+}
+
+.footer-bot-text {
+  color: rgb(90, 89, 89);
+}
+
+.footer-bot-text a {
+  color: blue;
+}
+
+/* responsive */
+
+@media (max-width: 960px) {
+  .main {
+    min-height: 80svh;
+  }
+
+  nav {
+    width: 100%;
+  }
+
+  .hero {
+    min-height: 37rem;
+    width: 100%;
+    padding-top: 0;
+    margin: -3rem 0 0 0rem;
+  }
+
+  .btn {
+    margin-right: 0.3rem;
+    font-size: 0.9rem;
+    padding: 0.3rem 0.8rem;
+    margin-top: 0;
+  }
+
+  .hero-heading {
+    font-size: 2.2rem;
+    text-align: center;
+    max-width: 100%;
+  }
+
+  nav img {
+    width: 6rem;
+    margin-top: 0;
+    flex-shrink: 0;
+  }
+
+  .btn {
+    font-size: 0.75rem;
+    padding: 0.35rem 0.9rem;
+    margin-right: 0;
+  }
+
+  .footer-question {
+    font-size: 1rem;
+  }
+
+  .footer-wraper {
+    grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr));
+    gap: 2rem;
+  }
+  .footer-content {
+    gap: 2rem;
+  }
+  .footer-button {
+    margin-top: 2rem;
+  }
+}
+
+@media (max-width: 500px) {
+  .hero {
+    padding-top: 0rem;
+    gap: 0.4rem;
+  }
+
+  .hero-cta-para {
+    text-align: center;
+    line-height: 1.5rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .subtitle {
+    font-size: 1rem;
+  }
+
+  .hero-cta {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+  }
+
+  .hero-cta button {
+    justify-content: center;
+    align-self: center;
+  }
+
+  .red-sm {
+    padding: 0.4rem 0.5rem;
+  }
+}
+
+@media (min-width: 1280px) {
+  .hero {
+    min-height: min(80vh, 45rem);
+  }
+}

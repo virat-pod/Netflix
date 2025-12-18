@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Netflix | By ViratPod</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="main">
+      <nav>
+        <span
+          ><img
+            src="/Clone Websites/Netflix/assets/netflix-logo/logo.svg"
+            width="53"
+        /></span>
+        <div class="flex-btn">
+          <div class="lang-wrapper">
+            <button class="btn lang-sm" id="langBtn" aria-expanded="false">
+              <span id="currentLang">English</span>
+              <span class="lang-arrow">&#x25BE;</span>
+            </button>
+
+            <ul class="lang-dropdown" id="langDropdown">
+              <li data-lang="English">English</li>
+              <li data-lang="Hindi">Hindi</li>
+            </ul>
+          </div>
+          <span>
+            <button class="btn red-sm">Sign In</button>
+          </span>
+        </div>
+      </nav>
+      <div class="box"></div>
+      <div class="hero">
+        <h1 class="hero-heading">
+          Unlimited movies, shows, <span>and more</span>
+        </h1>
+        <p class="subtitle">Starts at ₹149. Cancel at any time.</p>
+        <p class="hero-cta-para">
+          Ready to watch? Enter your email to create or restart your membership.
+        </p>
+        <div class="hero-cta">
+          <input type="email" placeholder="Email address" id="hero-input" />
+          <button>Get Started &gt;</button>
+        </div>
+      </div>
+    </div>
+    <div class="sepration"></div>
+    <main>
+      <section class="row">
+        <h2 class="titles row-title">Trending Movies</h2>
+        <div class="row-wrapper">
+          <button class="arrow left">&lt;</button>
+
+          <div id="slider" class="slider">
+            <div class="item">
+              <span class="rank">1</span>
+              <img src="/Clone Websites/Netflix/assets/img/image1.webp" />
+            </div>
+            <div class="item">
+              <span class="rank">2</span>
+              <img src="/Clone Websites/Netflix/assets/img/image2.webp" />
+            </div>
+            <div class="item">
+              <span class="rank">3</span>
+              <img src="/Clone Websites/Netflix/assets/img/image3.webp" />
+            </div>
+            <div class="item">
+              <span class="rank">4</span>
+              <img src="/Clone Websites/Netflix/assets/img/image4.webp" />
+            </div>
+            <div class="item">
+              <span class="rank">5</span>
+              <img src="/Clone Websites/Netflix/assets/img/image5.webp" />
+            </div>
+            <div class="item">
+              <span class="rank">6</span>
+              <img src="/Clone Websites/Netflix/assets/img/image6.webp" />
+            </div>
+            <div class="item">
+              <span class="rank">7</span>
+              <img src="/Clone Websites/Netflix/assets/img/image7.webp" />
+            </div>
+            <div class="item">
+              <span class="rank">8</span>
+              <img src="/Clone Websites/Netflix/assets/img/image8.webp" />
+            </div>
+            <div class="item">
+              <span class="rank">9</span>
+              <img src="/Clone Websites/Netflix/assets/img/image9.webp" />
+            </div>
+            <div class="item">
+              <span class="rank">10</span>
+              <img src="/Clone Websites/Netflix/assets/img/image10.webp" />
+            </div>
+          </div>
+
+          <button class="arrow right">&gt;</button>
+        </div>
+      </section>
+
+      <section class="card">
+        <h2 class="titles cards-title">More reasons to join</h2>
+        <div class="cards">
+          <div class="cards-grid">
+            <div class="card-item">
+              <div class="card-para card-para-1">
+                <h3>Enjoy on your TV</h3>
+                <p>
+                  Watch on smart TVs, PlayStation, Xbox, Chromecast, Apple TV
+                  and more.
+                </p>
+              </div>
+              <div class="card-icon">
+                <object
+                  data="/Clone Websites/Netflix/assets/netflix-logo/tv.svg"
+                  type=""
+                ></object>
+              </div>
+            </div>
+
+            <div class="card-item">
+              <div class="card-para card-para-2">
+                <h3>Download your shows</h3>
+                <p>
+                  Save your favourites easily and always have something to
+                  watch.
+                </p>
+              </div>
+              <div class="card-icon">
+                <object
+                  data="/Clone Websites/Netflix/assets/netflix-logo/download_icon.svg"
+                  type=""
+                ></object>
+              </div>
+            </div>
+
+            <div class="card-item">
+              <div class="card-para card-para-3">
+                <h3>Watch everywhere</h3>
+                <p>
+                  Stream unlimited movies and shows on your phone, tablet,
+                  laptop, and TV.
+                </p>
+              </div>
+              <div class="card-icon">
+                <object
+                  data="/Clone Websites/Netflix/assets/netflix-logo/watch_icon.svg"
+                  type=""
+                ></object>
+              </div>
+            </div>
+
+            <div class="card-item">
+              <div class="card-para card-para-4">
+                <h3>Create profiles for kids</h3>
+                <p>Send kids on adventures with their favourite characters.</p>
+              </div>
+              <div class="card-icon">
+                <object
+                  data="/Clone Websites/Netflix/assets/netflix-logo/anyone_icon.svg"
+                  type=""
+                ></object>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="faq">
+        <h2 class="titles">Frequently Asked Questions</h2>
+        <div class="faq-box">
+          <span>What is Netflix</span>
+          <object
+            data="/Clone Websites/Netflix/assets/netflix-logo/plus_icon.svg"
+          ></object>
+        </div>
+        <div class="faq-answer">
+          <p>
+            Netflix is a streaming service that offers a wide variety of
+            award-winning TV shows, movies, anime, documentaries and more on
+            thousands of internet-connected devices.
+            <br />
+            <br />
+            You can watch as much as you want, whenever you want, without a
+            single ad all for one low monthly price. There's always something
+            new to discover, and new TV shows and movies are added every week!
+          </p>
+        </div>
+        <div class="faq-box">
+          <span>How much does Netflix cost?</span>
+          <object
+            data="/Clone Websites/Netflix/assets/netflix-logo/plus_icon.svg"
+          ></object>
+        </div>
+        <div class="faq-answer">
+          <p>
+            Watch Netflix on your smartphone, tablet, Smart TV, laptop, or
+            streaming device, all for one fixed monthly fee. Plans range from
+            ₹149 to ₹649/month.
+          </p>
+        </div>
+        <div class="faq-box">
+          <span>Where can I watch?</span>
+          <object
+            data="/Clone Websites/Netflix/assets/netflix-logo/plus_icon.svg"
+          ></object>
+        </div>
+        <div class="faq-answer">
+          <p>
+            Watch anywhere, anytime. Sign in with your Netflix account to watch
+            instantly on the web at netflix.com from your personal computer or
+            on any internet-connected device that offers the Netflix app,
+            including smart TVs, smartphones, tablets, streaming media players
+            and game consoles.
+            <br />
+            <br />
+            You can also download your favourite shows with the iOS or Android
+            app. Use downloads to watch while you're on the go and without an
+            internet connection. Take Netflix with you anywhere.
+          </p>
+        </div>
+        <div class="faq-box">
+          <span>How do I cancel?</span>
+          <object
+            data="/Clone Websites/Netflix/assets/netflix-logo/plus_icon.svg"
+          ></object>
+        </div>
+        <div class="faq-answer">
+          <p>
+            Netflix is flexible. You can easily cancel your account online in
+            two clicks. There are no cancellation fees start or stop your
+            account anytime.
+          </p>
+        </div>
+        <div class="faq-box">
+          <span>What can I watch on Netflix?</span>
+          <object
+            data="/Clone Websites/Netflix/assets/netflix-logo/plus_icon.svg"
+          ></object>
+        </div>
+        <div class="faq-answer">
+          <p>
+            Netflix has an extensive library of feature films, documentaries,
+            shows, anime, award-winning Netflix originals, and more. Watch as
+            much as you want, anytime you want.
+          </p>
+        </div>
+      </section>
+
+      <section class="faq-cta">
+        <p class="faq-cta-text">
+          Ready to watch? Enter your email to create or restart your membership.
+        </p>
+
+        <div class="faq-cta-form">
+          <input type="email" placeholder="Email address" />
+          <button>Get Started &gt;</button>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="footer-question">Questions? Call 000-800-919-1743</div>
+      <div class="footer-wraper">
+        <div class="footer-item">
+          <a href="FAQ">Faq</a>
+          <a href="FAQ">Investor Relations</a>
+          <a href="FAQ">Privacy</a>
+          <a href="FAQ">Speed Test</a>
+        </div>
+        <div class="footer-item">
+          <a href="FAQ">Help Centre</a>
+          <a href="FAQ"> Jobs</a>
+          <a href="FAQ"> Cookie Preferences</a>
+          <a href="FAQ">Legal Notices</a>
+        </div>
+        <div class="footer-item">
+          <a href="FAQ">Account</a>
+          <a href="FAQ">Ways to Watch</a>
+          <a href="FAQ">Corporate Information</a>
+          <a href="FAQ">Only on Netflix</a>
+        </div>
+        <div class="footer-item">
+          <a href="FAQ">Media Centre</a>
+          <a href="FAQ">Terms of Use</a>
+          <a href="FAQ">Contact Us</a>
+        </div>
+      </div>
+      <div class="footer-content">
+        <div class="footer-button">
+          <button class="btn lang-sm footer-btn" id="footerLangBtn">
+            <span id="footerLang">English</span> &#x25BE;
+          </button>
+        </div>
+
+        <div class="virat-mark">
+          Netflix India |
+          <a href="https://github.com/virat-pod" target="_blank"
+            ><span>By ViratPod,</span></a
+          >
+          Clone.
+        </div>
+        <div class="footer-bot-text">
+          This page is protected by Google reCAPTCHA to ensure you're not a bot.
+          <a href=""> Learn more.</a>
+        </div>
+      </div>
+    </footer>
+
+    <script src="script.js" defer></script>
+  </body>
+</html>
