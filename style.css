@@ -670,8 +670,9 @@ main {
     margin-top: 2rem;
   }
   .faq-answer {
-   font-size: 1rem;
-  }
+  font-size: 0.9rem;
+}
+
 }
 
 @media (max-width: 500px) {
