@@ -2,7 +2,7 @@
 
 :root {
   /* Main Assets */
-  --main-bg-img: url("/Clone Websites/Netflix/assets/img/hero-image.jpg");
+  --main-bg-img: url("./assets/img/hero-image.jpg");
   --main-min-height: 93svh;
   --main-bg-size: max(93.75rem, 100vw);
 
@@ -668,6 +668,9 @@ main {
   }
   .footer-button {
     margin-top: 2rem;
+  }
+  .faq-answer {
+   font-size: 1rem;
   }
 }
 
