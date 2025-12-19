@@ -25,22 +25,24 @@ const faqBoxes = document.querySelectorAll(".faq-box");
 faqBoxes.forEach(box => {
   box.addEventListener("click", () => {
     const answer = box.nextElementSibling;
-    const isOpen = box.classList.contains("active");
 
-    faqBoxes.forEach(other => {
-      other.classList.remove("active");
+    // check immediately if clicked box is already open
+    const isOpen = answer.style.maxHeight && answer.style.maxHeight !== "0px";
 
-      // immediately collapse all
-      other.nextElementSibling.style.maxHeight = "null";
+    // collapse all others instantly
+    faqBoxes.forEach(b => {
+      b.classList.remove("active");
+      b.nextElementSibling.style.maxHeight = "0px";
     });
 
-    // open clicked box immediately if it was closed
+    // if clicked box was closed → open immediately
     if (!isOpen) {
       box.classList.add("active");
       answer.style.maxHeight = answer.scrollHeight + "px";
     }
   });
 });
+
 
 
 
