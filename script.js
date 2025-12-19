@@ -113,26 +113,30 @@ function handleEmail(formSelector) {
   const button = form.querySelector("button");
 
   const originalPlaceholder = input.placeholder;
-
-  // Button click animation helper
-  function pressEffect() {
-    button.classList.add("pressed");
-    setTimeout(() => {
-      button.classList.remove("pressed");
-    }, 120);
-  }
+  const originalBtnTransform = button.style.transform;
+  const originalBtnShadow = button.style.boxShadow;
 
   button.addEventListener("click", (e) => {
     e.preventDefault();
-    pressEffect();
 
-    // Agar input empty hai → input pe focus + outline
+    // Button click feel (press effect)
+    button.style.transform = "scale(0.95)";
+    button.style.boxShadow = "inset 0 2px 6px rgba(0,0,0,0.25)";
+
+    setTimeout(() => {
+      button.style.transform = originalBtnTransform;
+      button.style.boxShadow = originalBtnShadow;
+    }, 120);
+
+    // Faltu click → input focus + outline
     if (!input.value.trim()) {
       input.focus();
-      input.classList.add("focus-error");
+      input.style.outline = "2px solid #ff7675";
+      input.style.outlineOffset = "2px";
 
       setTimeout(() => {
-        input.classList.remove("focus-error");
+        input.style.outline = "";
+        input.style.outlineOffset = "";
       }, 800);
 
       return;
