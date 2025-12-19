@@ -25,25 +25,26 @@ const faqBoxes = document.querySelectorAll(".faq-box");
 faqBoxes.forEach(box => {
   box.addEventListener("click", () => {
     const answer = box.nextElementSibling;
-    const isOpen = box.classList.contains("active");
+
+    const isOpen = answer.style.maxHeight && answer.style.maxHeight !== "0px";
 
     // sab band karo
-    faqBoxes.forEach(other => {
-      other.classList.remove("active");
-      other.nextElementSibling.style.maxHeight = "0px";
+    document.querySelectorAll(".faq-answer").forEach(a => {
+      a.style.maxHeight = "0px";
     });
 
-    // agar pehle open nahi tha
+    document.querySelectorAll(".faq-box").forEach(b => {
+      b.classList.remove("active");
+    });
+
+    // agar pehle band tha → open karo
     if (!isOpen) {
       box.classList.add("active");
-
-      // 🔥 force reflow
-      answer.offsetHeight;
-
       answer.style.maxHeight = answer.scrollHeight + "px";
     }
   });
 });
+
 
 
 
