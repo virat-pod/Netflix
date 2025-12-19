@@ -266,6 +266,7 @@ nav img {
   display: flex;
   align-items: center;
   justify-content: center;
+  cursor: pointer;
 }
 
 .hero-cta button:hover {
@@ -520,6 +521,7 @@ nav img {
   border-radius: 4px;
   height: 3.6rem;
   align-self: center;
+  cursor: pointer;
 }
 
 .faq-cta-form button:hover {
@@ -585,6 +587,7 @@ main {
   margin-top: 2.5rem;
   max-width: 10rem;
   width: 100%;
+  cursor: pointer;
 }
 
 .virat-mark {
