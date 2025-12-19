@@ -25,21 +25,22 @@ const faqBoxes = document.querySelectorAll(".faq-box");
 faqBoxes.forEach(box => {
   box.addEventListener("click", () => {
     const answer = box.nextElementSibling;
-    const isActive = box.classList.contains("active");
 
-    // close all
+    const isOpen = box.classList.contains("active");
+
     faqBoxes.forEach(other => {
       other.classList.remove("active");
       other.nextElementSibling.style.maxHeight = null;
     });
 
-    // if clicked box was closed → open it
-    if (!isActive) {
+
+    if (!isOpen) {
       box.classList.add("active");
       answer.style.maxHeight = answer.scrollHeight + "px";
     }
   });
 });
+
 
 
 
@@ -101,7 +102,7 @@ function handleEmail(formSelector) {
 
     if (!input.value.trim()) return;
 
-    // success feedback INSIDE input
+
     input.value = "";
     input.placeholder = "✔ Done";
     input.style.color = "#2ecc71";
@@ -109,7 +110,7 @@ function handleEmail(formSelector) {
 
     button.disabled = true;
 
-    // 1 second baad normal state
+
     setTimeout(() => {
       input.placeholder = originalPlaceholder;
       input.style.color = "";
