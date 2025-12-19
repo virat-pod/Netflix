@@ -4,29 +4,25 @@ const rightBtn = document.querySelector(".arrow.right");
 
 console.log("JS CONNECTED");
 
-slider.scrollLeft = 0; // start position
+slider.scrollLeft = 0; 
 leftBtn.style.display = "none";
 rightBtn.style.display = "block";
 
-// Right button click
 rightBtn.onclick = () => {
   slider.scrollLeft += 1300;
 };
 
-// Left button click
 leftBtn.onclick = () => {
   slider.scrollLeft = 0;
 };
 
-// Listen to scroll events (drag or swipe on mobile)
 slider.addEventListener("scroll", () => {
   if (slider.scrollLeft > 0) {
-    leftBtn.style.display = "block"; // activate left arrow
+    leftBtn.style.display = "block"; 
   } else {
-    leftBtn.style.display = "none"; // deactivate
+    leftBtn.style.display = "none"; 
   }
 
-  // Optionally hide right arrow if at the end
   if (slider.scrollLeft + slider.clientWidth >= slider.scrollWidth) {
     rightBtn.style.display = "none";
   } else {
