@@ -114,44 +114,31 @@ function handleEmail(formSelector) {
 
   const originalPlaceholder = input.placeholder;
 
-  // Store original button styles
-  const originalBg = getComputedStyle(button).backgroundColor;
-  const originalColor = getComputedStyle(button).color;
+  // Button click animation helper
+  function pressEffect() {
+    button.classList.add("pressed");
+    setTimeout(() => {
+      button.classList.remove("pressed");
+    }, 120);
+  }
 
   button.addEventListener("click", (e) => {
     e.preventDefault();
+    pressEffect();
 
-    // 🎯 Netflix-style press feel (color lighten)
-    button.style.backgroundColor = "rgba(255,255,255,0.15)";
-    button.style.color = "#fff";
-
-    setTimeout(() => {
-      button.style.backgroundColor = originalBg;
-      button.style.color = originalColor;
-    }, 120);
-
-    // ❌ Empty input → aggressive guide
+    // Agar input empty hai → input pe focus + outline
     if (!input.value.trim()) {
-      input.scrollIntoView({
-        behavior: "smooth",
-        block: "center"
-      });
+      input.focus();
+      input.classList.add("focus-error");
 
       setTimeout(() => {
-        input.focus();
-        input.style.outline = "3px solid #ff7675";
-        input.style.outlineOffset = "3px";
-      }, 300);
-
-      setTimeout(() => {
-        input.style.outline = "";
-        input.style.outlineOffset = "";
-      }, 1000);
+        input.classList.remove("focus-error");
+      }, 800);
 
       return;
     }
 
-    // ✅ Success state
+    // Success state
     input.value = "";
     input.placeholder = "✔ Done";
     input.style.color = "#2ecc71";
@@ -170,4 +157,3 @@ function handleEmail(formSelector) {
 
 handleEmail(".hero-cta");
 handleEmail(".faq-cta-form");
-
