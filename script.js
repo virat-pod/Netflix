@@ -25,20 +25,22 @@ const faqBoxes = document.querySelectorAll(".faq-box");
 faqBoxes.forEach(box => {
   box.addEventListener("click", () => {
     const answer = box.nextElementSibling;
-
     const isOpen = box.classList.contains("active");
 
+    // close all instantly
     faqBoxes.forEach(other => {
       other.classList.remove("active");
-      other.nextElementSibling.style.maxHeight = null;
+      other.nextElementSibling.style.maxHeight = "0px"; // null → 0px
     });
 
+    // if it was closed → open immediately
     if (!isOpen) {
       box.classList.add("active");
       answer.style.maxHeight = answer.scrollHeight + "px";
     }
   });
 });
+
 
 
 
