@@ -20,17 +20,17 @@ leftBtn.onclick = () => {
 };
 
 
-
 const faqBoxes = document.querySelectorAll(".faq-box");
 
 faqBoxes.forEach(box => {
   box.addEventListener("click", () => {
     const answer = box.nextElementSibling;
-    const isOpen = answer.style.maxHeight && answer.style.maxHeight !== "0px";
 
-    faqBoxes.forEach(b => {
-      b.classList.remove("active");
-      b.nextElementSibling.style.maxHeight = "0px";
+    const isOpen = box.classList.contains("active");
+
+    faqBoxes.forEach(other => {
+      other.classList.remove("active");
+      other.nextElementSibling.style.maxHeight = null;
     });
 
     if (!isOpen) {
@@ -39,11 +39,6 @@ faqBoxes.forEach(box => {
     }
   });
 });
-
-
-
-
-
 
 
 
