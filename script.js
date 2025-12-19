@@ -4,20 +4,36 @@ const rightBtn = document.querySelector(".arrow.right");
 
 console.log("JS CONNECTED");
 
-
-slider.scrollRight = 1300;
+slider.scrollLeft = 0; // start position
 leftBtn.style.display = "none";
-rightBtn.style.display = "block";            
+rightBtn.style.display = "block";
 
+// Right button click
 rightBtn.onclick = () => {
   slider.scrollLeft += 1300;
-  leftBtn.style.display = "block";
 };
 
+// Left button click
 leftBtn.onclick = () => {
   slider.scrollLeft = 0;
-  leftBtn.style.display = "none";
 };
+
+// Listen to scroll events (drag or swipe on mobile)
+slider.addEventListener("scroll", () => {
+  if (slider.scrollLeft > 0) {
+    leftBtn.style.display = "block"; // activate left arrow
+  } else {
+    leftBtn.style.display = "none"; // deactivate
+  }
+
+  // Optionally hide right arrow if at the end
+  if (slider.scrollLeft + slider.clientWidth >= slider.scrollWidth) {
+    rightBtn.style.display = "none";
+  } else {
+    rightBtn.style.display = "block";
+  }
+});
+
 
 
 const faqBoxes = document.querySelectorAll(".faq-box");
