@@ -114,25 +114,29 @@ function handleEmail(formSelector) {
 
   const originalPlaceholder = input.placeholder;
 
+  // Store original button styles
+  const originalBg = getComputedStyle(button).backgroundColor;
+  const originalColor = getComputedStyle(button).color;
+
   button.addEventListener("click", (e) => {
     e.preventDefault();
 
-    button.style.transform = "scale(0.95)";
-    button.style.boxShadow = "inset 0 2px 6px rgba(0,0,0,0.25)";
+    // 🎯 Netflix-style press feel (color lighten)
+    button.style.backgroundColor = "rgba(255,255,255,0.15)";
+    button.style.color = "#fff";
 
     setTimeout(() => {
-      button.style.transform = "";
-      button.style.boxShadow = "";
+      button.style.backgroundColor = originalBg;
+      button.style.color = originalColor;
     }, 120);
 
-
+    // ❌ Empty input → aggressive guide
     if (!input.value.trim()) {
       input.scrollIntoView({
-        behavior: "smooth", 
+        behavior: "smooth",
         block: "center"
       });
 
-      
       setTimeout(() => {
         input.focus();
         input.style.outline = "3px solid #ff7675";
@@ -147,6 +151,7 @@ function handleEmail(formSelector) {
       return;
     }
 
+    // ✅ Success state
     input.value = "";
     input.placeholder = "✔ Done";
     input.style.color = "#2ecc71";
