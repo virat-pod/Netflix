@@ -20,24 +20,19 @@ leftBtn.onclick = () => {
 };
 
 
+
 const faqBoxes = document.querySelectorAll(".faq-box");
 
 faqBoxes.forEach(box => {
   box.addEventListener("click", () => {
     const answer = box.nextElementSibling;
-
     const isOpen = answer.style.maxHeight && answer.style.maxHeight !== "0px";
 
-    // sab band karo
-    document.querySelectorAll(".faq-answer").forEach(a => {
-      a.style.maxHeight = "0px";
-    });
-
-    document.querySelectorAll(".faq-box").forEach(b => {
+    faqBoxes.forEach(b => {
       b.classList.remove("active");
+      b.nextElementSibling.style.maxHeight = "0px";
     });
 
-    // agar pehle band tha → open karo
     if (!isOpen) {
       box.classList.add("active");
       answer.style.maxHeight = answer.scrollHeight + "px";
