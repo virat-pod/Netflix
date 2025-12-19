@@ -76,9 +76,6 @@ document.querySelectorAll(".faq-box").forEach((box) => {
 });
 
 
-
-
-
 const langWrapper = document.querySelector(".lang-wrapper");
 const langBtn = document.getElementById("langBtn");
 const langDropdown = document.getElementById("langDropdown");
@@ -89,12 +86,23 @@ langBtn.addEventListener("click", (e) => {
   langWrapper.classList.toggle("active");
 });
 
+
 langDropdown.querySelectorAll("li").forEach(item => {
-  item.addEventListener("click", () => {
+  item.addEventListener("click", (e) => {
+    e.stopPropagation();
     currentLang.innerText = item.dataset.lang;
     langWrapper.classList.remove("active");
   });
 });
+
+
+document.addEventListener("click", () => {
+  langWrapper.classList.remove("active");
+});
+
+
+
+
 
 function handleEmail(formSelector) {
   const form = document.querySelector(formSelector);
