@@ -113,22 +113,22 @@ function handleEmail(formSelector) {
   const button = form.querySelector("button");
 
   const originalPlaceholder = input.placeholder;
-  const originalBtnTransform = button.style.transform;
-  const originalBtnShadow = button.style.boxShadow;
+
+  // original button background store karo
+  const originalBtnBg = getComputedStyle(button).backgroundColor;
 
   button.addEventListener("click", (e) => {
     e.preventDefault();
 
-    // Button click feel (press effect)
-    button.style.transform = "scale(0.95)";
-    button.style.boxShadow = "inset 0 2px 6px rgba(0,0,0,0.25)";
+    // 🔴 Button press feel (Netflix-style)
+    button.style.backgroundColor = "rgb(180, 18, 18)";
 
     setTimeout(() => {
-      button.style.transform = originalBtnTransform;
-      button.style.boxShadow = originalBtnShadow;
+      // ⬅️ revert back so hover still works
+      button.style.backgroundColor = originalBtnBg;
     }, 120);
 
-    // Faltu click → input focus + outline
+    // ❌ Faltu click → input focus + outline
     if (!input.value.trim()) {
       input.focus();
       input.style.outline = "2px solid #ff7675";
@@ -142,7 +142,7 @@ function handleEmail(formSelector) {
       return;
     }
 
-    // Success state
+    // ✅ Success state
     input.value = "";
     input.placeholder = "✔ Done";
     input.style.color = "#2ecc71";
@@ -161,4 +161,5 @@ function handleEmail(formSelector) {
 
 handleEmail(".hero-cta");
 handleEmail(".faq-cta-form");
+
 
