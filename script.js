@@ -111,38 +111,41 @@ function handleEmail(formSelector) {
 
   const input = form.querySelector("input");
   const button = form.querySelector("button");
-
   const originalPlaceholder = input.placeholder;
-
-  // original button background store karo
-  const originalBtnBg = getComputedStyle(button).backgroundColor;
 
   button.addEventListener("click", (e) => {
     e.preventDefault();
 
-    // 🔴 Button press feel (Netflix-style)
-    button.style.backgroundColor = "rgb(180, 18, 18)";
-
+    button.style.transition = "filter 0.12s";
+    button.style.filter = "brightness(0.85)";
     setTimeout(() => {
-      // ⬅️ revert back so hover still works
-      button.style.backgroundColor = originalBtnBg;
+      button.style.filter = "";
     }, 120);
 
-    // ❌ Faltu click → input focus + outline
     if (!input.value.trim()) {
-      input.focus();
-      input.style.outline = "2px solid #ff7675";
-      input.style.outlineOffset = "2px";
+      const rect = input.getBoundingClientRect();
+      const targetY =
+        rect.top + window.pageYOffset - window.innerHeight * 0.35;
+
+      window.scrollTo({
+        top: targetY,
+        behavior: "smooth"
+      });
+
+      setTimeout(() => {
+        input.focus();
+        input.style.outline = "3px solid #ff7675";
+        input.style.outlineOffset = "3px";
+      }, 250);
 
       setTimeout(() => {
         input.style.outline = "";
         input.style.outlineOffset = "";
-      }, 800);
+      }, 1000);
 
       return;
     }
 
-    // ✅ Success state
     input.value = "";
     input.placeholder = "✔ Done";
     input.style.color = "#2ecc71";
