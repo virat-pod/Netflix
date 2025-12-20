@@ -114,49 +114,35 @@ function handleEmail(formSelector) {
 
   const originalPlaceholder = input.placeholder;
 
+  // original button background store karo
+  const originalBtnBg = getComputedStyle(button).backgroundColor;
+
   button.addEventListener("click", (e) => {
     e.preventDefault();
 
-    const overlay = document.createElement("span");
-    overlay.style.position = "absolute";
-    overlay.style.inset = "0";
-    overlay.style.backgroundColor = "rgb(180, 18, 18)";
-    overlay.style.opacity = "0.25";
-    overlay.style.pointerEvents = "none";
-    overlay.style.borderRadius = "inherit";
+    // 🔴 Button press feel (Netflix-style)
+    button.style.backgroundColor = "rgb(180, 18, 18)";
 
-    if (getComputedStyle(button).position === "static") {
-      button.style.position = "relative";
-    }
+    setTimeout(() => {
+      // ⬅️ revert back so hover still works
+      button.style.backgroundColor = originalBtnBg;
+    }, 120);
 
-    button.appendChild(overlay);
-    setTimeout(() => overlay.remove(), 120);
-
+    // ❌ Faltu click → input focus + outline
     if (!input.value.trim()) {
-      const y =
-        input.getBoundingClientRect().top +
-        window.pageYOffset -
-        window.innerHeight / 2;
-
-      window.scrollTo({
-        top: y,
-        behavior: "smooth"
-      });
-
-      setTimeout(() => {
-        input.focus();
-        input.style.outline = "3px solid #ff7675";
-        input.style.outlineOffset = "3px";
-      }, 250);
+      input.focus();
+      input.style.outline = "2px solid #ff7675";
+      input.style.outlineOffset = "2px";
 
       setTimeout(() => {
         input.style.outline = "";
         input.style.outlineOffset = "";
-      }, 1000);
+      }, 800);
 
       return;
     }
 
+    // ✅ Success state
     input.value = "";
     input.placeholder = "✔ Done";
     input.style.color = "#2ecc71";
