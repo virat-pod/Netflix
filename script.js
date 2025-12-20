@@ -117,46 +117,46 @@ function handleEmail(formSelector) {
   button.addEventListener("click", (e) => {
     e.preventDefault();
 
-    // 🔴 PRESS EFFECT via overlay (hover safe)
     const overlay = document.createElement("span");
     overlay.style.position = "absolute";
-    overlay.style.top = "0";
-    overlay.style.left = "0";
-    overlay.style.width = "100%";
-    overlay.style.height = "100%";
+    overlay.style.inset = "0";
     overlay.style.backgroundColor = "rgb(180, 18, 18)";
     overlay.style.opacity = "0.25";
     overlay.style.pointerEvents = "none";
     overlay.style.borderRadius = "inherit";
 
-    // ensure button is relative
-    const prevPosition = button.style.position;
     if (getComputedStyle(button).position === "static") {
       button.style.position = "relative";
     }
 
     button.appendChild(overlay);
+    setTimeout(() => overlay.remove(), 120);
 
-    setTimeout(() => {
-      overlay.remove();
-      button.style.position = prevPosition;
-    }, 120);
-
-    // ❌ Empty input → focus + outline
     if (!input.value.trim()) {
-      input.focus();
-      input.style.outline = "2px solid #ff7675";
-      input.style.outlineOffset = "2px";
+      const y =
+        input.getBoundingClientRect().top +
+        window.pageYOffset -
+        window.innerHeight / 2;
+
+      window.scrollTo({
+        top: y,
+        behavior: "smooth"
+      });
+
+      setTimeout(() => {
+        input.focus();
+        input.style.outline = "3px solid #ff7675";
+        input.style.outlineOffset = "3px";
+      }, 250);
 
       setTimeout(() => {
         input.style.outline = "";
         input.style.outlineOffset = "";
-      }, 800);
+      }, 1000);
 
       return;
     }
 
-    // ✅ Success state
     input.value = "";
     input.placeholder = "✔ Done";
     input.style.color = "#2ecc71";
@@ -175,6 +175,3 @@ function handleEmail(formSelector) {
 
 handleEmail(".hero-cta");
 handleEmail(".faq-cta-form");
-
-
-
