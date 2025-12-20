@@ -119,17 +119,21 @@ function handleEmail(formSelector) {
   button.addEventListener("click", (e) => {
     e.preventDefault();
 
-    button.style.background = "rgb(175, 18, 18)"
-    
+    // Button click feel (press effect)
+    button.style.transform = "scale(0.95)";
+    button.style.boxShadow = "inset 0 2px 6px rgba(0,0,0,0.25)";
+
     setTimeout(() => {
       button.style.transform = originalBtnTransform;
       button.style.boxShadow = originalBtnShadow;
     }, 120);
 
-
+    // Faltu click → input focus + outline
     if (!input.value.trim()) {
       input.focus();
-      
+      input.style.outline = "2px solid #ff7675";
+      input.style.outlineOffset = "2px";
+
       setTimeout(() => {
         input.style.outline = "";
         input.style.outlineOffset = "";
@@ -157,3 +161,4 @@ function handleEmail(formSelector) {
 
 handleEmail(".hero-cta");
 handleEmail(".faq-cta-form");
+
