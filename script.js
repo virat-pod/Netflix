@@ -38,13 +38,13 @@ faqBoxes.forEach(box => {
     const answer = box.nextElementSibling;
     const isOpen = box.classList.contains("active");
 
-    // Close all first
+    // Close all
     faqBoxes.forEach(other => {
       other.classList.remove("active");
       other.nextElementSibling.style.maxHeight = "0px";
     });
 
-    // Open only if it was closed
+    // Open clicked if it was closed
     if (!isOpen) {
       box.classList.add("active");
       answer.style.maxHeight = answer.scrollHeight + "px";
@@ -52,8 +52,6 @@ faqBoxes.forEach(box => {
 
   });
 });
-
-
 
 const footerBtn = document.getElementById("footerLangBtn");
 const footerLang = document.getElementById("footerLang");
@@ -75,7 +73,6 @@ document.querySelectorAll(".faq-box").forEach((box) => {
     }
   });
 });
-
 
 const langWrapper = document.querySelector(".lang-wrapper");
 const langBtn = document.getElementById("langBtn");
