@@ -35,11 +35,17 @@ const faqBoxes = document.querySelectorAll(".faq-box");
 faqBoxes.forEach(box => {
   box.addEventListener("click", () => {
     const answer = box.nextElementSibling;
-
     const isOpen = box.classList.contains("active");
+    
     if (!isOpen) {
       answer.style.maxHeight = answer.scrollHeight + "px";
     }
+    else if (isOpen) {
+      faqBoxes.addEventListener((click)=> {
+        faqBoxes.classlist.remove("active");
+      }
+      }
+        
         faqBoxes.forEach(other => {
       other.classList.remove("active");
       other.nextElementSibling.style.maxHeight = null;
