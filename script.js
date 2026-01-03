@@ -38,13 +38,13 @@ faqBoxes.forEach(box => {
     const answer = box.nextElementSibling;
     const isOpen = box.classList.contains("active");
 
-    // Close all FAQs first
+    // Close all first
     faqBoxes.forEach(other => {
       other.classList.remove("active");
-      other.nextElementSibling.style.maxHeight = null;
+      other.nextElementSibling.style.maxHeight = "0px";
     });
 
-    // If it was closed, open it
+    // Open only if it was closed
     if (!isOpen) {
       box.classList.add("active");
       answer.style.maxHeight = answer.scrollHeight + "px";
@@ -52,7 +52,6 @@ faqBoxes.forEach(box => {
 
   });
 });
-
 
 
 
