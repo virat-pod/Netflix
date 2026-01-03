@@ -2,8 +2,6 @@ const slider = document.getElementById("slider");
 const leftBtn = document.querySelector(".arrow.left");
 const rightBtn = document.querySelector(".arrow.right");
 
-console.log("JS CONNECTED");
-
 slider.scrollLeft = 0; 
 leftBtn.style.display = "none";
 rightBtn.style.display = "block";
