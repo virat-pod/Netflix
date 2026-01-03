@@ -37,16 +37,13 @@ faqBoxes.forEach(box => {
     const answer = box.nextElementSibling;
 
     const isOpen = box.classList.contains("active");
-
-    faqBoxes.forEach(other => {
+    if (!isOpen) {
+      answer.style.maxHeight = answer.scrollHeight + "px";
+    }
+        faqBoxes.forEach(other => {
       other.classList.remove("active");
       other.nextElementSibling.style.maxHeight = null;
     });
-
-    if (!isOpen) {
-      box.classList.add("active");
-      answer.style.maxHeight = answer.scrollHeight + "px";
-    }
   });
 });
 
