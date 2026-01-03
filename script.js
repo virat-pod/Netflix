@@ -28,8 +28,6 @@ slider.addEventListener("scroll", () => {
   }
 });
 
-
-
 const faqBoxes = document.querySelectorAll(".faq-box");
 
 faqBoxes.forEach(box => {
@@ -53,6 +51,9 @@ faqBoxes.forEach(box => {
   });
 });
 
+
+
+
 const footerBtn = document.getElementById("footerLangBtn");
 const footerLang = document.getElementById("footerLang");
 
@@ -61,18 +62,6 @@ footerBtn.addEventListener("click", () => {
     footerLang.innerText === "English" ? "Hindi" : "English";
 });
 
-
-document.querySelectorAll(".faq-box").forEach((box) => {
-  box.addEventListener("click", () => {
-    const answer = box.nextElementSibling;
-
-    if (answer.style.maxHeight) {
-      answer.style.maxHeight = null;
-    } else {
-      answer.style.maxHeight = answer.scrollHeight + "px";
-    }
-  });
-});
 
 const langWrapper = document.querySelector(".lang-wrapper");
 const langBtn = document.getElementById("langBtn");
